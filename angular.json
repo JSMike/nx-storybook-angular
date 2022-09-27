@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "angular": "libs/angular",
     "storybook-default": "apps/storybook-default",
     "storybook-default-e2e": "apps/storybook-default-e2e"
   }
