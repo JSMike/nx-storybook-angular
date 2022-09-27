@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "storybook-default": "apps/storybook-default",
+    "storybook-default-e2e": "apps/storybook-default-e2e"
+  }
+}
