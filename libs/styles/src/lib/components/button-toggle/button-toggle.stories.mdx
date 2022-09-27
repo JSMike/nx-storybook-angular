@@ -1,0 +1,33 @@
+import { Meta, Canvas, Story} from '@storybook/addon-docs';
+import './button-toggle.stories.scss';
+
+export const defaultArgs = {
+  labelText: 'Toggle Me',
+  isSelected: false;
+};
+
+<Meta 
+  title="Components/Button toggle"
+  argTypes={{
+    labelText: {
+      control: 'text'
+    },
+    isSelected: {
+      control: 'boolean'
+    }
+  }}
+/>
+
+export const STORY_SOURCE = ({ labelText, isSelected }) => {
+  return `<button type="button" class="nx-sb-button-toggle${isSelected ? ' nx-sb-button-toggle--selected' : ''}">${}</button>`;
+};
+
+export const STORY = (args) => {
+  return `<div class="button-toggle-story-wrapper">${STORY_SOURCE(args)}</div>`;
+};
+
+<Canvas mdxSource={STORY_SOURCE(defaultArgs)}>
+  <Story name="Button toggle">
+    {STORY.bind({})}
+  </Story>
+</Canvas>

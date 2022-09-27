@@ -88,6 +88,35 @@
         "jestConfig": "apps/storybook-default/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/storybook-default/.storybook",
+        "browserTarget": "storybook-default:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/storybook-default",
+        "configDir": "apps/storybook-default/.storybook",
+        "browserTarget": "storybook-default:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   },
   "tags": []

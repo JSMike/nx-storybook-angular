@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@jsmike/nx-sb-ng": ["libs/angular/src/index.ts"]
+      "@jsmike/nx-sb-ng/*": ["libs/angular/src/lib/*"],
+      "@jsmike/nx-sb-styles": ["libs/styles/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

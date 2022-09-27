@@ -4,6 +4,6 @@
   "projects": {
     "angular": "libs/angular",
     "storybook-default": "apps/storybook-default",
-    "storybook-default-e2e": "apps/storybook-default-e2e"
+    "styles": "libs/styles"
   }
 }

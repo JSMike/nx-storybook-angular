@@ -1,0 +1,80 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/styles/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/styles",
+        "main": "libs/styles/src/index.ts",
+        "tsConfig": "libs/styles/tsconfig.lib.json",
+        "assets": ["libs/styles/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs styles {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/styles/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/styles"],
+      "options": {
+        "jestConfig": "libs/styles/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/html",
+        "port": 4500,
+        "config": {
+          "configFolder": "libs/styles/.storybook"
+        },
+        "projectBuildConfig": "styles:build-storybook",
+        "disableHostCheck": true,
+        "host": "0.0.0.0"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/html",
+        "outputPath": "dist/storybook/styles",
+        "config": {
+          "configFolder": "libs/styles/.storybook"
+        },
+        "projectBuildConfig": "styles:build-storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
